@@ -18,7 +18,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
+//        http
 //                .authorizeRequests()
 ////                .antMatchers("/", "/home").permitAll()
 //                .antMatchers("/", "/home").permitAll()
@@ -27,7 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .anyRequest().authenticated()
 //                .and()
 //                .httpBasic();
-              
+    	http
         	  .authorizeRequests()
               .antMatchers("/", "/home").permitAll()
               .antMatchers("/customers/**").hasRole("USER")
@@ -37,12 +37,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                 .failureUrl("/login?error")
-                .and()
+                .permitAll()
+              .and()
                 .logout()
                 .clearAuthentication(true)
                 .invalidateHttpSession(true)
                 .logoutSuccessUrl("/login?logout")
-                .permitAll();
+                .permitAll()
+        ;
     }
 
     @Bean
