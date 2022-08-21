@@ -37,4 +37,10 @@ public class WebErrorController implements ErrorController {
         }
         return "error";
     }
+
+	@Override
+	public String getErrorPath() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
